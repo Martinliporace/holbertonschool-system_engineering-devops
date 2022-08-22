@@ -18,7 +18,7 @@ printf %s "server {
            return 301 https://www.youtube.com/watch?v=AzRR1Dqd2kE/;
      }
      location / {
-           add_header X-Served-By $hostname;
+           add_header X-Served-By '$HOSTNAME';
            error_page 404 /404.html;
      }
 }" > /etc/nginx/sites-available/default;
