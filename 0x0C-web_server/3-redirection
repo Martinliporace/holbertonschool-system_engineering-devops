@@ -13,5 +13,5 @@ printf %s "server {
            return 301 https://www.youtube.com/watch?v=AzRR1Dqd2kE/;
      }
      }
-}" > /etc/nginx/sites-available/default;
+" > /etc/nginx/sites-available/default;
 service nginx restart;
