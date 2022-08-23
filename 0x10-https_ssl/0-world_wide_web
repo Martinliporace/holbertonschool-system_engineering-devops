@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Task 0. World wide web
+
+arg1="$1"
+arg2="$2"
+if [ "$#" != "2" ]; then
+for i in "www" "lb-01" "web-01" "web-02"
+do
+  arg3=$i
+  sub_dom="$arg3.$arg1"
+  dig "$sub_dom" | grep -A1 'ANSWER SECTION:' > text.txt
+  ip=$(awk '{print $5}' text.txt)
+  record=$(awk '{print $4}' text.txt)
+  echo The subdomain $arg3 is a $record record and points to $ip
+done
+else
+sub_dom="$arg2.$arg1"
+dig "$sub_dom" | grep -A1 'ANSWER SECTION:' > text.txt
+ip=$(awk '{print $5}' text.txt)
+record=$(awk '{print $4}' text.txt)
+echo The subdomain $arg2 is a $record record and points to $ip
+fi
