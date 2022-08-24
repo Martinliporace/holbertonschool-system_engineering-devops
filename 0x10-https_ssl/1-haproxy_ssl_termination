@@ -1,11 +1,11 @@
 frontend front_end                                                                                                                      
-    bind *:443                                                                                                                          
-    option forwardfor                                                                                                                   
+    bind *:80                                                                                                                          
+    http-request redirect scheme https unless { ssl_fc }                                                                                                                   
     default_backend back_end                                                                                                            
                                                                                                                                         
 frontend main_https                                                                                                                     
     bind *:443 ssl crt /etc/letsencrypt/live/www.resqr.tech/fullchain.pem                                                               
-    acl    letsencrypt-acl path_beg /.well-known/acme-challenge/                                                                        
+    default_backend back_end                                                                        
                                                                                                                                         
 backend back_end                                                                                                                        
     balance roundrobin                                                                                                                  
