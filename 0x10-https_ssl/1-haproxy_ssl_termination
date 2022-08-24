@@ -1,0 +1,13 @@
+frontend front_end                                                                                                                      
+    bind *:443                                                                                                                          
+    option forwardfor                                                                                                                   
+    default_backend back_end                                                                                                            
+                                                                                                                                        
+frontend main_https                                                                                                                     
+    bind *:443 ssl crt /etc/letsencrypt/live/www.resqr.tech/fullchain.pem                                                               
+    acl    letsencrypt-acl path_beg /.well-known/acme-challenge/                                                                        
+                                                                                                                                        
+backend back_end                                                                                                                        
+    balance roundrobin                                                                                                                  
+    server 4432-web-01 54.147.142.107:80 check                                                                                          
+    server 4432-web-02 34.235.143.218:80 check
