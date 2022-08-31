@@ -143,12 +143,11 @@ COMMIT
 -A POSTROUTING -s 172.17.0.3/32 -d 172.17.0.3/32 -p tcp -m tcp --dport 80 -j MASQUERADE                                                 
 -A DOCKER -i docker0 -j RETURN                                                                                                          
 -A DOCKER ! -i docker0 -p tcp -m tcp --dport 8080 -j DNAT --to-destination 172.17.0.3:80                                                
-COMMIT                                                                                                                                  
-*nat                                                                                                                                    
-                                                                                                                                        
-# Completed on Wed Aug 31 12:35:20 2022                                                                                                 
-:PREROUTING ACCEPT [0:0]                                                                                                                
-                                                                                                                                        
--A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80                                                                              
-                                                                                                                                        
 COMMIT
+                                                                                                                                
+*nat
+:PREROUTING ACCEPT [0:0]                                                                                                                
+-A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80                                                                              
+COMMIT
+
+# Completed on Wed Aug 31 12:35:20 2022
