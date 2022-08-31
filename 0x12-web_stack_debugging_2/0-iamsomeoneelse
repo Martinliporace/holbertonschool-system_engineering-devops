@@ -1,9 +1,3 @@
 #!/usr/bin/env bash
 # Task 0. Run software as another user
-if [ $# = 1 ]
-then
-user="$1"
-su - "$user" -c "whoami"
-else
-	sudo "whoami"
-fi
+sudo -u "$1" whoami
