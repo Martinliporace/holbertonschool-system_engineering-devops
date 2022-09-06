@@ -34,4 +34,4 @@ if __name__ == "__main__":
                                                            EMPLOYEE_COMPLETED,
                                                            todo))
     for comp in completed:
-        print('\t'+comp)
+        print('\t'+comp+' ')
