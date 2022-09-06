@@ -3,9 +3,9 @@
 """Python script that, using this REST API, for a given employee ID,
 returns information about his/her TODO list progress."""
 if __name__ == "__main__":
-    from urllib.request import urlopen
     import json
     import sys
+    from urllib.request import urlopen
 
     user = sys.argv[1]
     urlUser = 'https://jsonplaceholder.typicode.com/users/' + user
