@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
     EMPLOYEE_COMPLETED = todo - falses
     EMPLOYEE_NAME = dataUser.get('name')
-    print('Employee {} is done with tasks ({}/{}):'.format(EMPLOYEE_NAME,
+    print('Employee {} is done with tasks({}/{}):'.format(EMPLOYEE_NAME,
                                                            EMPLOYEE_COMPLETED,
                                                            todo))
     for comp in completed:
