@@ -1,0 +1,36 @@
+#!/usr/bin/python3
+# Task 0
+"""Python script that, using this REST API, for a given employee ID,
+returns information about his/her TODO list progress."""
+if __name__ == "__main__":
+    from urllib.request import urlopen
+    import json
+    import sys
+
+    user = sys.argv[1]
+    urlUser = 'https://jsonplaceholder.typicode.com/users/' + user
+    r = urlopen(urlUser)
+    dataUser = json.loads(r.read().decode(r.info().get_param('charset')))
+
+    user = int(sys.argv[1])
+    urlTodo = 'https://jsonplaceholder.typicode.com/todos/'
+    r2 = urlopen(urlTodo)
+    dataTodo = json.loads(r2.read().decode(r2.info().get_param('charset')))
+    todo = 0
+    falses = 0
+    completed = []
+    for x in dataTodo:
+        if 'userId' in x:
+            if x.get('userId') == user:
+                todo += 1
+                if x.get('completed') is False:
+                    falses += 1
+                else:
+                    completed.append(x.get('title'))
+
+    EMPLOYEE_COMPLETED = todo - falses
+    EMPLOYEE_NAME = dataUser.get('name')
+    print ('Employee {} is done with tasks ({}/{}):'.format(EMPLOYEE_NAME,
+           EMPLOYEE_COMPLETED, todo))
+    for comp in completed:
+        print ('\t'+comp)
