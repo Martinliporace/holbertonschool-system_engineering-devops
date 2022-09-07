@@ -27,6 +27,6 @@ if __name__ == "__main__":
     for v in list_dir:
         out = mydict(v)
         list_out.append(out)
-    final = [user, list_out]
+    final = {'{}'.format(user): list_out}
     with open('{}.json'.format(user), 'w') as f:
         json.dump(final, f)
