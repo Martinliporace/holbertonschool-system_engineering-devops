@@ -13,9 +13,9 @@ if __name__ == "__main__":
     res2 = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'
                         .format(user)).json()
 
-    with open("{}.csv".format(user), 'w', encoding='UTF8') as f:
+    with open("{}.csv".format(user), 'w') as f:
         writer = csv.writer(f, quoting=csv.QUOTE_ALL)
         for x in res2:
-            writer.writerow([int(user), res.get('username'),
+            writer.writerow([user, res.get('username'),
                             x.get('completed'),
                             x.get('title')])
