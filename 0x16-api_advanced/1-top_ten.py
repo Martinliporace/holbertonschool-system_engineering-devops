@@ -18,4 +18,4 @@ def top_ten(subreddit):
         for x in range(10):
             print(top_ten[x])
     except Exception:
-        return 0
+        return ('None')
